@@ -2,60 +2,74 @@ function computerSelection(){
     choices = ['rock','paper','scissor'];
     return choices[Math.floor(Math.random()*choices.length)]
 }
-function playerSelection(){
-    choice = prompt("Enter your choice:");
-    return choice.toLowerCase();
-}
+var result = document.querySelector(".resulttext");
+var scores = document.querySelectorAll(".scoretext");
+var gif = document.querySelector(".gif");
 
-function playGame(compChoice = computerSelection(),playerChoice = playerSelection()){
+function playGame(compChoice = computerSelection(),playerChoice,event){
+    var playerScore = parseInt(scores[0].textContent);
+    var compScore = parseInt(scores[1].textContent);
     let winner = false;
     if(compChoice=='rock' && playerChoice=='scissor'){
-        console.log("rock beats scissor!!");
+        result.textContent = "rock beats scissor!!";
+        gif.src = "https://media3.giphy.com/media/JQAXhJMw2WbKWYjn8g/giphy.gif";
         winner = false;
     }
     else if (compChoice=='scissor' && playerChoice=='rock'){
-        console.log("rock beats scissor!!");
+        result.textContent = "rock beats scissor!!";
+        gif.src = "https://media3.giphy.com/media/JQAXhJMw2WbKWYjn8g/giphy.gif";
         winner = true;
     }
     else if(compChoice=='scissor' && playerChoice=='paper'){
-        console.log("scissor cuts paper!!");
+        result.textContent = "scissor cuts paper!!";
+        gif.src = "https://cdn.dribbble.com/users/729829/screenshots/4189148/galshir-cutting-paper-dirbbble.gif";
         winner = false;
     }
     else if (compChoice=='paper' && playerChoice=='scissor'){
-        console.log("scissor cuts paper!!");
+        result.textContent = "scissor cuts paper!!";
+        gif.src = "https://cdn.dribbble.com/users/729829/screenshots/4189148/galshir-cutting-paper-dirbbble.gif";
         winner = true
     }
     else if(compChoice=='paper' && playerChoice=='rock'){
-        console.log("paper covers rock!!");
+        result.textContent = "paper covers rock!!";
+        gif.src = "https://c.tenor.com/mpdRJ7wlNNIAAAAM/rock-paper.gif";
         winner = false;
     }
     else if (compChoice=='rock' && playerChoice=='paper'){
-        console.log("paper covers rock!!");
+        result.textContent = "paper covers rock!!";
+        gif.src = "https://c.tenor.com/mpdRJ7wlNNIAAAAM/rock-paper.gif";
         winner = true;
     }
-    else console.log("Try again!!");
-
-    return winner == true ? "Player" : "Computer";
-}
-
-function game(rounds = 5){
-    playerScore = 0;
-    compScore = 0;
-    for (let i=1;i<=rounds;i++){
-        console.log("Round"+i);
-        compChoice = computerSelection();
-        playerChoice = playerSelection();
-        console.log("Computer plays " + compChoice);
-        console.log("Player plays " + playerChoice);
-        winner = playGame(compChoice,playerChoice);
-        console.log("Winner is " + winner + "!!");
-        if (winner=="Player")
-            playerScore += 1;
-        if (winner=="Computer")
-            compScore += 1;
+    else {
+        result.textContent = "try again";
+        gif.src = "https://media0.giphy.com/media/4Z1FfSmDgdAZIqvIOg/giphy.gif";
+        return;
     }
-    if (playerScore>compScore)
-        console.log("Player wins the game!! :)");
-    else console.log("Computer wins the game. :(");
+    winner == true ? playerScore++ : compScore++;
+    scoreUpdate(playerScore,compScore);
     
 }
+
+function scoreUpdate(p,c){
+    scores[0].textContent =  p.toString();
+    scores[1].textContent = c.toString();
+    var check = 0;
+    if(p == 5){
+        result.textContent = "Player Wins";
+        check = 1;
+    }
+    if(c == 5){
+        result.textContent = "Computer Wins";
+        check = 1;
+    }
+    if(check == 1){
+        scores[0].textContent = "0";
+        scores[1].textContent = "0";
+    } 
+}
+var rockBtn = document.querySelector('.rock');
+rockBtn.addEventListener('click',(evt) => playGame(computerSelection(),playerChoice = "rock",evt));
+var paperBtn = document.querySelector('.paper');
+paperBtn.addEventListener('click',(evt) => playGame(computerSelection(),playerChoice = "paper",evt));
+var scissorBtn = document.querySelector('.scissor');
+scissorBtn.addEventListener('click',(evt) => playGame(computerSelection(),playerChoice = "scissor",evt));

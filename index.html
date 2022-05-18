@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="./script.js"> </script>
+        <link rel="stylesheet" href="./style.css">
+        <script defer src="./script.js"> </script>
         <title>Rock Paper Scissor</title>
     </head>
     <body>
-        <h1>Working on it!!</h1>
-        <button type="button" onclick = "game()">Play</button>
+        <div class="header">
+        <h1>ROCK PAPER AND SCISSORS!!</h1>
+        <img class="image" src="sn-rockpaper.jpg" >
+        </div>
+        <div class="block">
+            <div class="display">
+                <span >Display Board</span>
+                <span class="resulttext"> No Result</span>
+            </div>
+            <div class="scoreboard">
+                <div class="score">
+                    <span>Player Score</span>
+                    <span class="scoretext">0</span>
+                </div>
+                <div class="score">
+                    <span>Computer Score</span>
+                    <span class="scoretext">0</span>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button class="rock" type="button" >ROCK</button>
+            <button class="paper" type="button" >PAPER</button>
+            <button class="scissor" type="button" >SCISSOR</button>
+        </div>
+        <div class="animation">
+            <img class="gif" src="https://31.media.tumblr.com/13acd6911b5091d21983d3c8889386a5/tumblr_mqbnqgyatB1sng8wro1_500.gif">
+        </div>
     </body>
 </html>

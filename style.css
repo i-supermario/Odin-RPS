@@ -1,0 +1,65 @@
+.header{
+    display: flex;
+    flex: auto;
+    flex-flow: nowrap row;
+    justify-content: space-around;
+    align-items: center;
+}
+.image{
+    height: 300px;
+    width: auto;
+}
+button{
+    width: 100px;
+    height: 40px;
+}
+.buttons{
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: center;
+    gap: 0 20px;
+    margin-top: 50px;
+}
+.display{
+    display: flex;
+    flex-flow: nowrap column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 10px;
+    margin-top: 30px;
+}
+.resulttext,
+.scoretext{
+    font-size: 30px;
+    font-weight: 700;
+    color: blueviolet;
+}
+.scoreboard{
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: space-between;
+    align-content: center;
+    margin: 30px;
+    column-gap: 30px;
+}
+.block{
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: space-evenly;
+    margin: 20px;
+    align-items: center;
+}
+.score{
+    display: flex;
+    flex-flow: nowrap column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 10px;
+    margin-top: 30px;
+}
+.animation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
